@@ -1,0 +1,9 @@
+﻿total turns 344
+turn 0: user=True msg=True resp=True | Vous avez dit j'ai un projet data complexe, assez nouveau je pense. il s'agirait d'une ontologie, structurÚe autour d'un
+turn 1: user=True msg=True resp=True | Vous avez dit je voudrais commencer Ó coder. donc pour chaque technique que tu trouve intÚressante, prÚsente le projet m
+turn 2: user=True msg=True resp=True | Vous avez dit mon idÚe c'est vraiment que la structure de donnÚe ait une capacitÚ de sonder les participant, de maniÞre 
+turn 3: user=True msg=True resp=True | Vous avez dit Úcoute, rÚflÚchis Ó une exemple simple: 3 personnes, et qui doivent se dÚcider entre bretagne et mÚditerra
+turn 4: user=True msg=True resp=True | Vous avez dit mon projet doit pouvoir augmenter le nombre d'option et le nombre de participants. que proposes-tu? Vous t
+turn 5: user=True msg=True resp=True | Vous avez dit tu as proposÚ un algorithme gÚnÚtique. je te remercie de me l'apprendre. je ne connais pas du tout, expliq
+title candidate h1 Ontologie pour la recherche de compromis
+title candidate [class*='title'] Ontologie pour la recherche de compromishttps://gemini.google.com/share/00564221

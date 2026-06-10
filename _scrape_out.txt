@@ -1,0 +1,13 @@
+﻿python : Traceback (most recent call last):
+Au caractère C:\Users\DimiP\AppData\Local\Temp\ps-script-bf5e127d-1793-4504-b996-6b0c15e14fc2.ps1:158 : 1
++ python -c "
++ ~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<string>", line 8, in <module>
+  File "C:\Users\DimiP\miniconda3\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u200e' in position 0: character maps to <undefined>
+title: 
