@@ -1,0 +1,6 @@
+# Dépendances Python du projet agora-protocol-engine
+# Scraping / parsing des conversations Gemini (scripts/)
+beautifulsoup4==4.15.0
+lxml==6.1.3
+html2text==2025.4.15
+playwright==1.63.0
