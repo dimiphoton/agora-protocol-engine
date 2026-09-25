@@ -110,6 +110,7 @@ def publier(nom: str, brut: dict) -> dict:
             "mode": brut.get("mode"),
             "version": version_git(),
             "preferences": brut.get("preferences"),
+            "chemins": brut.get("chemins"),
         }
     )
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from agora.core.chemins import essayer_chemins, lire_chemins
 from agora.core.moteur import tourner
 from agora.kr.charger import charger
 from agora.kr.negociation import (
@@ -100,6 +101,13 @@ def jouer(
                 "notes_recues": notes_recues,
             }
         )
+        bilan = essayer_chemins(
+            graphe,
+            {"notes": notes, "veto": veto},
+            numero=numero,
+            seed=seed,
+        )
+        historique[-1]["direction"] = bilan["retenu"]
         if _meme_meilleur(historique):
             break
 
@@ -114,6 +122,7 @@ def jouer(
         "graphe": graphe,
         "mode": dernier["mode"] if dernier else None,
         "preferences": {"notes": notes, "veto": veto},
+        "chemins": lire_chemins(graphe),
     }
 
 
