@@ -1,0 +1,7 @@
+PREFIX nego: <https://agora.local/negociation#>
+SELECT ?qui ?option ?note WHERE {
+    ?reponse a nego:Reponse .
+    ?reponse nego:de ?qui .
+    ?reponse nego:porteSur ?option .
+    ?reponse nego:note ?note .
+}

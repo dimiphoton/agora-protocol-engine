@@ -1,0 +1,9 @@
+PREFIX nego: <https://agora.local/negociation#>
+SELECT ?chemin ?pas ?gain ?tour ?retenu ?detail WHERE {
+    ?chemin a nego:Chemin .
+    ?chemin nego:pas ?pas .
+    ?chemin nego:gain ?gain .
+    ?chemin nego:tour ?tour .
+    OPTIONAL { ?chemin nego:retenu ?retenu }
+    OPTIONAL { ?chemin nego:detail ?detail }
+}

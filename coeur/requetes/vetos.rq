@@ -1,0 +1,6 @@
+PREFIX nego: <https://agora.local/negociation#>
+SELECT ?qui ?cible WHERE {
+    ?veto a nego:Veto .
+    ?veto nego:auteur ?qui .
+    ?veto nego:cible ?cible .
+}

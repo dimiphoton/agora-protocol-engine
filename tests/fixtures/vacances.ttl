@@ -1,0 +1,12 @@
+@prefix dom: <https://agora.local/domaine#> .
+@prefix id: <https://agora.local/id/domaine/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+id:bretagne a dom:Option ; rdfs:label "Bretagne" .
+id:auvergne a dom:Option ; rdfs:label "Auvergne" .
+id:voile a dom:Option ; rdfs:label "Voile" .
+id:nautique a dom:Option ; rdfs:label "Nautique" .
+id:acces_mer a dom:Trait ; rdfs:label "Accès mer" .
+
+id:voile dom:requiert id:acces_mer .
+id:voile dom:sousType id:nautique .
