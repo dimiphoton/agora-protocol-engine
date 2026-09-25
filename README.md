@@ -2,7 +2,7 @@
 
 Moteur de compromis : un groupe choisit entre des options, le programme cherche celle qui frustre le moins la personne la moins satisfaite.
 
-Le domaine (vacances, restaurant, week-end) est un fichier JSON. Le calcul est dans `agora/core/`. La représentation des connaissances est un graphe NetworkX : voir [docs/decision-kr.md](docs/decision-kr.md). Les formules des chiffres affichés sont dans [docs/math-consensus.md](docs/math-consensus.md). Les chemins testés sur le graphe (proposition, concession, question) sont dans [docs/chemins-negociation.md](docs/chemins-negociation.md).
+Le démonstrateur (vacances, restaurant, week-end) vit dans `agora/` avec NetworkX : voir [docs/decision-kr.md](docs/decision-kr.md). Le cœur RDF pour la suite est `coeur/` : [docs/coeur.md](docs/coeur.md). Les formules des chiffres affichés sont dans [docs/math-consensus.md](docs/math-consensus.md). Les chemins testés sur le graphe (proposition, concession, question) sont dans [docs/chemins-negociation.md](docs/chemins-negociation.md).
 
 ## Lancer en local
 

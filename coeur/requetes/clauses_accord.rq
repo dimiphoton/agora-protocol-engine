@@ -1,0 +1,6 @@
+PREFIX nego: <https://agora.local/negociation#>
+SELECT ?clause ?texte WHERE {
+    ?accord a nego:Accord .
+    ?accord nego:contient ?clause .
+    OPTIONAL { ?clause nego:texte ?texte }
+}

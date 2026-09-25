@@ -1,0 +1,5 @@
+PREFIX nego: <https://agora.local/negociation#>
+SELECT ?question WHERE {
+    ?question a nego:Question .
+    FILTER NOT EXISTS { ?reponse nego:repond ?question }
+}

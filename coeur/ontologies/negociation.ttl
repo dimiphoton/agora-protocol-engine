@@ -1,0 +1,71 @@
+@prefix nego: <https://agora.local/negociation#> .
+@prefix dom: <https://agora.local/domaine#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+nego:Participant a rdfs:Class ; rdfs:label "Participant" .
+nego:Question a rdfs:Class ; rdfs:label "Question" .
+nego:Reponse a rdfs:Class ; rdfs:label "Reponse" .
+nego:Veto a rdfs:Class ; rdfs:label "Veto" .
+nego:Proposition a rdfs:Class ; rdfs:label "Proposition" .
+nego:Chemin a rdfs:Class ; rdfs:label "Chemin" .
+nego:Direction a rdfs:Class ; rdfs:label "Direction" .
+nego:Reglage a rdfs:Class ; rdfs:label "Reglage" .
+nego:Accord a rdfs:Class ; rdfs:label "Accord" .
+nego:Clause a rdfs:Class ; rdfs:label "Clause" .
+
+nego:repond a rdf:Property ;
+    rdfs:domain nego:Reponse ;
+    rdfs:range nego:Question .
+
+nego:porteSur a rdf:Property ;
+    rdfs:domain nego:Reponse ;
+    rdfs:range dom:Option .
+
+nego:pose a rdf:Property ;
+    rdfs:domain nego:Question ;
+    rdfs:range nego:Participant .
+
+nego:concerne a rdf:Property ;
+    rdfs:domain nego:Question ;
+    rdfs:range dom:Option .
+
+nego:auteur a rdf:Property ;
+    rdfs:domain nego:Veto ;
+    rdfs:range nego:Participant .
+
+nego:de a rdf:Property ;
+    rdfs:label "de" ;
+    rdfs:range nego:Participant .
+
+nego:cible a rdf:Property ;
+    rdfs:domain nego:Veto ;
+    rdfs:range dom:Option .
+
+nego:retient a rdf:Property ;
+    rdfs:domain nego:Proposition ;
+    rdfs:range dom:Option .
+
+nego:choisit a rdf:Property ;
+    rdfs:domain nego:Direction ;
+    rdfs:range nego:Chemin .
+
+nego:contient a rdf:Property ;
+    rdfs:domain nego:Accord ;
+    rdfs:range nego:Clause .
+
+nego:note a rdf:Property ; rdfs:label "note" .
+nego:pourquoi a rdf:Property ; rdfs:label "pourquoi" .
+nego:tour a rdf:Property ; rdfs:label "tour" .
+nego:pas a rdf:Property ; rdfs:label "pas" .
+nego:gain a rdf:Property ; rdfs:label "gain" .
+nego:retenu a rdf:Property ; rdfs:label "retenu" .
+nego:detail a rdf:Property ; rdfs:label "detail" .
+nego:critere a rdf:Property ; rdfs:label "critere" .
+nego:vetoCout a rdf:Property ; rdfs:label "vetoCout" .
+nego:modeVeto a rdf:Property ; rdfs:label "modeVeto" .
+nego:toursStables a rdf:Property ; rdfs:label "toursStables" .
+nego:maxTours a rdf:Property ; rdfs:label "maxTours" .
+nego:seuil a rdf:Property ; rdfs:label "seuil" .
+nego:autorise a rdf:Property ; rdfs:label "autorise" .
+nego:texte a rdf:Property ; rdfs:label "texte" .

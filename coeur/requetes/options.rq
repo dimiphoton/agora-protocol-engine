@@ -1,0 +1,2 @@
+PREFIX dom: <https://agora.local/domaine#>
+SELECT ?option WHERE { ?option a dom:Option }

@@ -1,0 +1,27 @@
+@prefix dom: <https://agora.local/domaine#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+dom:Option a rdfs:Class ; rdfs:label "Option" .
+dom:Trait a rdfs:Class ; rdfs:label "Trait" .
+dom:Critere a rdfs:Class ; rdfs:label "Critere" .
+
+dom:requiert a rdf:Property ;
+    rdfs:label "requiert" ;
+    rdfs:domain dom:Option ;
+    rdfs:range dom:Trait .
+
+dom:implique a rdf:Property ;
+    rdfs:label "implique" ;
+    rdfs:domain dom:Option ;
+    rdfs:range dom:Trait .
+
+dom:sousType a rdf:Property ;
+    rdfs:label "sousType" ;
+    rdfs:domain dom:Option ;
+    rdfs:range dom:Option .
+
+dom:incompatible a rdf:Property ;
+    rdfs:label "incompatible" ;
+    rdfs:domain dom:Option ;
+    rdfs:range dom:Option .

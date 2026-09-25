@@ -1,0 +1,5 @@
+PREFIX nego: <https://agora.local/negociation#>
+SELECT ?sujet ?prop ?objet WHERE {
+    ?sujet nego:tour ?tour .
+    ?sujet ?prop ?objet .
+}

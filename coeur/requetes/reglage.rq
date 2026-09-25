@@ -1,0 +1,11 @@
+PREFIX nego: <https://agora.local/negociation#>
+SELECT ?critere ?vetoCout ?modeVeto ?toursStables ?maxTours ?seuil ?pas WHERE {
+    ?reglage a nego:Reglage .
+    OPTIONAL { ?reglage nego:critere ?critere }
+    OPTIONAL { ?reglage nego:vetoCout ?vetoCout }
+    OPTIONAL { ?reglage nego:modeVeto ?modeVeto }
+    OPTIONAL { ?reglage nego:toursStables ?toursStables }
+    OPTIONAL { ?reglage nego:maxTours ?maxTours }
+    OPTIONAL { ?reglage nego:seuil ?seuil }
+    OPTIONAL { ?reglage nego:autorise ?pas }
+}
