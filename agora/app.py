@@ -234,7 +234,7 @@ def _afficher_resultat(resultat: dict, scenario: dict) -> None:
         st.caption("Pas encore de rounds successifs.")
 
     _afficher_progression(resultat)
-    _afficher_frontieres(scenario_id, resultat)
+    _afficher_frontieres(scenario["id"], resultat)
 
 
 def _afficher_progression(resultat: dict) -> None:
