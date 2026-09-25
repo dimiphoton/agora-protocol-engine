@@ -1,0 +1,461 @@
+{
+  "id": "vacances_large",
+  "domaine": "vacances",
+  "dimensions": [
+    "destination",
+    "logement",
+    "activite",
+    "transport",
+    "saison",
+    "duree"
+  ],
+  "noeuds": [
+    {
+      "id": "nord",
+      "type": "destination",
+      "label": "Nord",
+      "traits": [
+        "littoral"
+      ]
+    },
+    {
+      "id": "sud",
+      "type": "destination",
+      "label": "Sud",
+      "traits": [
+        "littoral"
+      ]
+    },
+    {
+      "id": "est",
+      "type": "destination",
+      "label": "Est",
+      "traits": []
+    },
+    {
+      "id": "ouest",
+      "type": "destination",
+      "label": "Ouest",
+      "traits": []
+    },
+    {
+      "id": "tente",
+      "type": "logement",
+      "label": "Tente",
+      "traits": []
+    },
+    {
+      "id": "auberge",
+      "type": "logement",
+      "label": "Auberge",
+      "traits": []
+    },
+    {
+      "id": "chambre",
+      "type": "logement",
+      "label": "Chambre",
+      "traits": []
+    },
+    {
+      "id": "villa",
+      "type": "logement",
+      "label": "Villa",
+      "traits": []
+    },
+    {
+      "id": "marche",
+      "type": "activite",
+      "label": "Marche",
+      "traits": []
+    },
+    {
+      "id": "bain",
+      "type": "activite",
+      "label": "Bain",
+      "traits": []
+    },
+    {
+      "id": "scene",
+      "type": "activite",
+      "label": "Scène",
+      "traits": []
+    },
+    {
+      "id": "visite",
+      "type": "activite",
+      "label": "Visite",
+      "traits": []
+    },
+    {
+      "id": "rail",
+      "type": "transport",
+      "label": "Rail",
+      "traits": []
+    },
+    {
+      "id": "route",
+      "type": "transport",
+      "label": "Route",
+      "traits": []
+    },
+    {
+      "id": "carrosse",
+      "type": "transport",
+      "label": "Carrosse",
+      "traits": []
+    },
+    {
+      "id": "bateau",
+      "type": "transport",
+      "label": "Bateau",
+      "traits": []
+    },
+    {
+      "id": "printemps",
+      "type": "saison",
+      "label": "Printemps",
+      "traits": []
+    },
+    {
+      "id": "ete",
+      "type": "saison",
+      "label": "Été",
+      "traits": []
+    },
+    {
+      "id": "automne",
+      "type": "saison",
+      "label": "Automne",
+      "traits": []
+    },
+    {
+      "id": "hiver",
+      "type": "saison",
+      "label": "Hiver",
+      "traits": []
+    },
+    {
+      "id": "court",
+      "type": "duree",
+      "label": "Court",
+      "traits": []
+    },
+    {
+      "id": "moyen",
+      "type": "duree",
+      "label": "Moyen",
+      "traits": []
+    },
+    {
+      "id": "long",
+      "type": "duree",
+      "label": "Long",
+      "traits": []
+    },
+    {
+      "id": "tres_long",
+      "type": "duree",
+      "label": "Très long",
+      "traits": []
+    },
+    {
+      "id": "littoral",
+      "type": "trait",
+      "label": "Littoral",
+      "traits": []
+    },
+    {
+      "id": "aquatique",
+      "type": "classe",
+      "label": "Aquatique",
+      "traits": []
+    },
+    {
+      "id": "foule",
+      "type": "concept",
+      "label": "Foule",
+      "traits": []
+    }
+  ],
+  "relations": [
+    {
+      "source": "bain",
+      "relation": "requiert",
+      "cible": "littoral"
+    },
+    {
+      "source": "bateau",
+      "relation": "requiert",
+      "cible": "littoral"
+    },
+    {
+      "source": "villa",
+      "relation": "incompatible",
+      "cible": "hiver"
+    },
+    {
+      "source": "bain",
+      "relation": "sous_type",
+      "cible": "aquatique"
+    },
+    {
+      "source": "scene",
+      "relation": "implique",
+      "cible": "foule"
+    }
+  ],
+  "participants": [
+    {
+      "id": "camille",
+      "label": "Camille"
+    },
+    {
+      "id": "omar",
+      "label": "Omar"
+    },
+    {
+      "id": "nina",
+      "label": "Nina"
+    },
+    {
+      "id": "hugo",
+      "label": "Hugo"
+    },
+    {
+      "id": "chloe",
+      "label": "Chloé"
+    },
+    {
+      "id": "yanis",
+      "label": "Yanis"
+    },
+    {
+      "id": "amina",
+      "label": "Amina"
+    },
+    {
+      "id": "louis",
+      "label": "Louis"
+    }
+  ],
+  "profils": {
+    "camille": "cooperatif",
+    "omar": "veto_prone",
+    "nina": "incomplet",
+    "hugo": "bruite",
+    "chloe": "cooperatif",
+    "yanis": "veto_prone",
+    "amina": "incomplet",
+    "louis": "bruite"
+  },
+  "gouts": {
+    "camille": {
+      "nord": -2,
+      "sud": 10,
+      "est": 5,
+      "ouest": 7,
+      "tente": -9,
+      "auberge": -7,
+      "chambre": 1,
+      "villa": -8,
+      "marche": -7,
+      "bain": 3,
+      "scene": -7,
+      "visite": 3,
+      "rail": -3,
+      "route": 4,
+      "carrosse": 4,
+      "bateau": -4,
+      "printemps": -7,
+      "ete": 2,
+      "automne": 4,
+      "hiver": -5,
+      "court": -10,
+      "moyen": 7,
+      "long": 10,
+      "tres_long": 6
+    },
+    "omar": {
+      "nord": -8,
+      "sud": 1,
+      "est": 6,
+      "ouest": -9,
+      "tente": 7,
+      "auberge": 8,
+      "chambre": -5,
+      "villa": -8,
+      "marche": 10,
+      "bain": -3,
+      "scene": -2,
+      "visite": 10,
+      "rail": 1,
+      "route": -1,
+      "carrosse": 1,
+      "bateau": 3,
+      "printemps": -5,
+      "ete": 3,
+      "automne": -2,
+      "hiver": -7,
+      "court": 6,
+      "moyen": 2,
+      "long": 4,
+      "tres_long": -2
+    },
+    "nina": {
+      "nord": 8,
+      "sud": 6,
+      "est": 1,
+      "ouest": 2,
+      "tente": -3,
+      "auberge": 0,
+      "chambre": 8,
+      "villa": -2,
+      "marche": 5,
+      "bain": 2,
+      "scene": 9,
+      "visite": 5,
+      "rail": -4,
+      "route": 10,
+      "carrosse": 2,
+      "bateau": -2,
+      "printemps": -10,
+      "ete": -2,
+      "automne": -10,
+      "hiver": -10,
+      "court": -4,
+      "moyen": 2,
+      "long": 9,
+      "tres_long": 3
+    },
+    "hugo": {
+      "nord": -10,
+      "sud": 8,
+      "est": 3,
+      "ouest": 8,
+      "tente": -8,
+      "auberge": 0,
+      "chambre": 8,
+      "villa": -7,
+      "marche": 1,
+      "bain": -5,
+      "scene": -6,
+      "visite": -10,
+      "rail": -1,
+      "route": 5,
+      "carrosse": -9,
+      "bateau": 4,
+      "printemps": 10,
+      "ete": 0,
+      "automne": -10,
+      "hiver": -4,
+      "court": -9,
+      "moyen": 8,
+      "long": -9,
+      "tres_long": 2
+    },
+    "chloe": {
+      "nord": 0,
+      "sud": -2,
+      "est": -7,
+      "ouest": 2,
+      "tente": 7,
+      "auberge": 9,
+      "chambre": -4,
+      "villa": 8,
+      "marche": -3,
+      "bain": 5,
+      "scene": 9,
+      "visite": -3,
+      "rail": 9,
+      "route": 10,
+      "carrosse": -9,
+      "bateau": -10,
+      "printemps": -2,
+      "ete": -10,
+      "automne": -1,
+      "hiver": -10,
+      "court": 6,
+      "moyen": 2,
+      "long": 1,
+      "tres_long": -10
+    },
+    "yanis": {
+      "nord": 0,
+      "sud": 1,
+      "est": -4,
+      "ouest": 4,
+      "tente": 9,
+      "auberge": 5,
+      "chambre": -8,
+      "villa": 10,
+      "marche": -10,
+      "bain": 5,
+      "scene": -6,
+      "visite": 0,
+      "rail": -1,
+      "route": -9,
+      "carrosse": 8,
+      "bateau": -9,
+      "printemps": 3,
+      "ete": -7,
+      "automne": -5,
+      "hiver": -8,
+      "court": 8,
+      "moyen": 4,
+      "long": -9,
+      "tres_long": -5
+    },
+    "amina": {
+      "nord": 6,
+      "sud": 4,
+      "est": 9,
+      "ouest": 3,
+      "tente": 8,
+      "auberge": 3,
+      "chambre": -10,
+      "villa": 9,
+      "marche": 8,
+      "bain": -10,
+      "scene": 10,
+      "visite": -3,
+      "rail": 5,
+      "route": 0,
+      "carrosse": -8,
+      "bateau": -10,
+      "printemps": -7,
+      "ete": 6,
+      "automne": -7,
+      "hiver": -9,
+      "court": 7,
+      "moyen": 3,
+      "long": -3,
+      "tres_long": 6
+    },
+    "louis": {
+      "nord": -1,
+      "sud": -4,
+      "est": -9,
+      "ouest": 3,
+      "tente": -2,
+      "auberge": 3,
+      "chambre": -10,
+      "villa": -1,
+      "marche": 5,
+      "bain": 4,
+      "scene": 10,
+      "visite": -6,
+      "rail": -2,
+      "route": -10,
+      "carrosse": -8,
+      "bateau": 8,
+      "printemps": 1,
+      "ete": 9,
+      "automne": -7,
+      "hiver": -9,
+      "court": -3,
+      "moyen": 3,
+      "long": -10,
+      "tres_long": -7
+    }
+  }
+}

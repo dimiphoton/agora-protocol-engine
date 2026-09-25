@@ -1,0 +1,25 @@
+{
+  "id": "veto",
+  "domaine": "generique",
+  "dimensions": ["option"],
+  "noeuds": [
+    {"id": "favori", "type": "option", "label": "Favori", "traits": []},
+    {"id": "repli", "type": "option", "label": "Repli", "traits": []}
+  ],
+  "relations": [],
+  "participants": [
+    {"id": "p1", "label": "P1"},
+    {"id": "p2", "label": "P2"},
+    {"id": "p3", "label": "P3"}
+  ],
+  "preferences": {
+    "notes": {
+      "p1": {"favori": 8, "repli": 2},
+      "p2": {"favori": 8, "repli": 2},
+      "p3": {"favori": 8, "repli": 2}
+    },
+    "veto": {
+      "p1": ["favori"]
+    }
+  }
+}

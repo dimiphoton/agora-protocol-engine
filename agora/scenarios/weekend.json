@@ -1,0 +1,175 @@
+{
+  "id": "weekend",
+  "domaine": "weekend",
+  "dimensions": ["jour", "lieu", "rythme"],
+  "noeuds": [
+    {
+      "id": "vendredi",
+      "type": "jour",
+      "label": "Vendredi",
+      "traits": ["ouverture_tardive"]
+    },
+    {
+      "id": "samedi",
+      "type": "jour",
+      "label": "Samedi",
+      "traits": ["ouverture_tardive"]
+    },
+    {
+      "id": "dimanche",
+      "type": "jour",
+      "label": "Dimanche",
+      "traits": ["repos"]
+    },
+    {
+      "id": "parc",
+      "type": "lieu",
+      "label": "Parc",
+      "traits": []
+    },
+    {
+      "id": "musee",
+      "type": "lieu",
+      "label": "Musée",
+      "traits": []
+    },
+    {
+      "id": "cave",
+      "type": "lieu",
+      "label": "Cave",
+      "traits": ["ouverture_tardive"]
+    },
+    {
+      "id": "pose",
+      "type": "rythme",
+      "label": "Posé",
+      "traits": []
+    },
+    {
+      "id": "soutenu",
+      "type": "rythme",
+      "label": "Soutenu",
+      "traits": []
+    },
+    {
+      "id": "nocturne",
+      "type": "rythme",
+      "label": "Nocturne",
+      "traits": []
+    },
+    {
+      "id": "ouverture_tardive",
+      "type": "trait",
+      "label": "Ouverture tardive",
+      "traits": []
+    },
+    {
+      "id": "repos",
+      "type": "trait",
+      "label": "Repos",
+      "traits": []
+    },
+    {
+      "id": "sortie",
+      "type": "classe",
+      "label": "Sortie",
+      "traits": []
+    },
+    {
+      "id": "fatigue",
+      "type": "concept",
+      "label": "Fatigue",
+      "traits": []
+    }
+  ],
+  "relations": [
+    {"source": "nocturne", "relation": "requiert", "cible": "ouverture_tardive"},
+    {"source": "musee", "relation": "incompatible", "cible": "nocturne"},
+    {"source": "soutenu", "relation": "incompatible", "cible": "repos"},
+    {"source": "cave", "relation": "sous_type", "cible": "sortie"},
+    {"source": "nocturne", "relation": "implique", "cible": "fatigue"}
+  ],
+  "participants": [
+    {"id": "nora", "label": "Nora"},
+    {"id": "eli", "label": "Eli"},
+    {"id": "jules", "label": "Jules"}
+  ],
+  "profils": {
+    "nora": "cooperatif",
+    "eli": "bruite",
+    "jules": "veto_prone"
+  },
+  "gouts": {
+    "nora": {
+      "vendredi": 2,
+      "samedi": 7,
+      "dimanche": 4,
+      "parc": 8,
+      "musee": 3,
+      "cave": -2,
+      "pose": 6,
+      "soutenu": 1,
+      "nocturne": -4
+    },
+    "eli": {
+      "vendredi": 6,
+      "samedi": 5,
+      "dimanche": -1,
+      "parc": 2,
+      "musee": 1,
+      "cave": 7,
+      "pose": 0,
+      "soutenu": 3,
+      "nocturne": 8
+    },
+    "jules": {
+      "vendredi": 1,
+      "samedi": 3,
+      "dimanche": 8,
+      "parc": 4,
+      "musee": 6,
+      "cave": -7,
+      "pose": 7,
+      "soutenu": -2,
+      "nocturne": -6
+    }
+  },
+  "preferences": {
+    "notes": {
+      "nora": {
+        "vendredi": 2,
+        "samedi": 7,
+        "dimanche": 4,
+        "parc": 8,
+        "musee": 3,
+        "cave": -2,
+        "pose": 6,
+        "soutenu": 1,
+        "nocturne": -4
+      },
+      "eli": {
+        "vendredi": 6,
+        "samedi": 5,
+        "dimanche": -1,
+        "parc": 2,
+        "musee": 1,
+        "cave": 7,
+        "pose": 0,
+        "soutenu": 3,
+        "nocturne": 8
+      },
+      "jules": {
+        "vendredi": 1,
+        "samedi": 3,
+        "dimanche": 8,
+        "parc": 4,
+        "musee": 6,
+        "cave": -7,
+        "pose": 7,
+        "soutenu": -2,
+        "nocturne": -6
+      }
+    },
+    "veto": {}
+  }
+}

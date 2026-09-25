@@ -1,0 +1,25 @@
+{
+  "id": "prefs_manquantes",
+  "domaine": "generique",
+  "dimensions": ["a", "b"],
+  "noeuds": [
+    {"id": "a0", "type": "a", "label": "A0", "traits": []},
+    {"id": "a1", "type": "a", "label": "A1", "traits": []},
+    {"id": "b0", "type": "b", "label": "B0", "traits": []},
+    {"id": "b1", "type": "b", "label": "B1", "traits": []}
+  ],
+  "relations": [],
+  "participants": [
+    {"id": "p1", "label": "P1"},
+    {"id": "p2", "label": "P2"},
+    {"id": "p3", "label": "P3"}
+  ],
+  "preferences": {
+    "notes": {
+      "p1": {"a0": 9},
+      "p2": {"b1": 4},
+      "p3": {}
+    },
+    "veto": {}
+  }
+}
