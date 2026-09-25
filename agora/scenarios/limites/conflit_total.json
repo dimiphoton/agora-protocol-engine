@@ -1,0 +1,25 @@
+{
+  "id": "conflit_total",
+  "domaine": "generique",
+  "dimensions": ["x", "y"],
+  "noeuds": [
+    {"id": "x0", "type": "x", "label": "X0", "traits": []},
+    {"id": "x1", "type": "x", "label": "X1", "traits": []},
+    {"id": "y0", "type": "y", "label": "Y0", "traits": []},
+    {"id": "y1", "type": "y", "label": "Y1", "traits": []}
+  ],
+  "relations": [],
+  "participants": [
+    {"id": "p1", "label": "P1"},
+    {"id": "p2", "label": "P2"},
+    {"id": "p3", "label": "P3"}
+  ],
+  "preferences": {
+    "notes": {
+      "p1": {"x0": 8, "x1": -8, "y0": 8, "y1": -8},
+      "p2": {"x0": -8, "x1": 8, "y0": -8, "y1": 8},
+      "p3": {"x0": 3, "x1": -1, "y0": -1, "y1": 3}
+    },
+    "veto": {}
+  }
+}

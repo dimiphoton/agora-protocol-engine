@@ -1,0 +1,23 @@
+{
+  "id": "egalite",
+  "domaine": "generique",
+  "dimensions": ["option"],
+  "noeuds": [
+    {"id": "haute", "type": "option", "label": "Haute", "traits": []},
+    {"id": "basse", "type": "option", "label": "Basse", "traits": []}
+  ],
+  "relations": [],
+  "participants": [
+    {"id": "p1", "label": "P1"},
+    {"id": "p2", "label": "P2"},
+    {"id": "p3", "label": "P3"}
+  ],
+  "preferences": {
+    "notes": {
+      "p1": {"haute": 0, "basse": 0},
+      "p2": {"haute": 6, "basse": 0},
+      "p3": {"haute": 0, "basse": 0}
+    },
+    "veto": {}
+  }
+}

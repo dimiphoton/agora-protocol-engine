@@ -1,0 +1,129 @@
+{
+  "id": "vacances_3",
+  "domaine": "vacances",
+  "dimensions": ["destination", "logement", "activite"],
+  "noeuds": [
+    {
+      "id": "bretagne",
+      "type": "destination",
+      "label": "Bretagne",
+      "traits": ["acces_mer"]
+    },
+    {
+      "id": "mediterranee",
+      "type": "destination",
+      "label": "Méditerranée",
+      "traits": ["acces_mer"]
+    },
+    {
+      "id": "auvergne",
+      "type": "destination",
+      "label": "Auvergne",
+      "traits": ["montagne"]
+    },
+    {
+      "id": "camping",
+      "type": "logement",
+      "label": "Camping",
+      "traits": []
+    },
+    {
+      "id": "hotel",
+      "type": "logement",
+      "label": "Hôtel",
+      "traits": []
+    },
+    {
+      "id": "velo",
+      "type": "activite",
+      "label": "Vélo",
+      "traits": []
+    },
+    {
+      "id": "voile",
+      "type": "activite",
+      "label": "Voile",
+      "traits": []
+    },
+    {
+      "id": "festival",
+      "type": "activite",
+      "label": "Festival",
+      "traits": []
+    },
+    {
+      "id": "nautique",
+      "type": "classe",
+      "label": "Nautique",
+      "traits": []
+    },
+    {
+      "id": "budget_eleve",
+      "type": "concept",
+      "label": "Budget élevé",
+      "traits": []
+    },
+    {
+      "id": "acces_mer",
+      "type": "trait",
+      "label": "Accès mer",
+      "traits": []
+    },
+    {
+      "id": "montagne",
+      "type": "trait",
+      "label": "Montagne",
+      "traits": []
+    }
+  ],
+  "relations": [
+    {"source": "voile", "relation": "sous_type", "cible": "nautique"},
+    {"source": "voile", "relation": "requiert", "cible": "acces_mer"},
+    {"source": "festival", "relation": "implique", "cible": "budget_eleve"}
+  ],
+  "participants": [
+    {"id": "alice", "label": "Alice"},
+    {"id": "samir", "label": "Samir"},
+    {"id": "lea", "label": "Léa"}
+  ],
+  "profils": {
+    "alice": "cooperatif",
+    "samir": "veto_prone",
+    "lea": "incomplet"
+  },
+  "gouts": {
+    "alice": {
+      "bretagne": 6,
+      "mediterranee": 7,
+      "auvergne": 2,
+      "camping": 3,
+      "hotel": 5,
+      "velo": 4,
+      "voile": 6,
+      "festival": 1,
+      "acces_mer": 5
+    },
+    "samir": {
+      "bretagne": 4,
+      "mediterranee": -2,
+      "auvergne": 8,
+      "camping": -8,
+      "hotel": 6,
+      "velo": 7,
+      "voile": -6,
+      "festival": 3,
+      "montagne": 7
+    },
+    "lea": {
+      "bretagne": 5,
+      "mediterranee": 6,
+      "auvergne": -1,
+      "camping": 4,
+      "hotel": 2,
+      "velo": 3,
+      "voile": 8,
+      "festival": -3,
+      "acces_mer": 4
+    }
+  }
+}

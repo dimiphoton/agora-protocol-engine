@@ -1,0 +1,168 @@
+{
+  "id": "resto",
+  "domaine": "resto",
+  "dimensions": ["cuisine", "quartier", "prix"],
+  "noeuds": [
+    {
+      "id": "ramen",
+      "type": "cuisine",
+      "label": "Ramen",
+      "traits": []
+    },
+    {
+      "id": "pizza",
+      "type": "cuisine",
+      "label": "Pizza",
+      "traits": []
+    },
+    {
+      "id": "gastronomique",
+      "type": "cuisine",
+      "label": "Gastronomique",
+      "traits": []
+    },
+    {
+      "id": "canal",
+      "type": "quartier",
+      "label": "Canal",
+      "traits": []
+    },
+    {
+      "id": "colline",
+      "type": "quartier",
+      "label": "Colline",
+      "traits": []
+    },
+    {
+      "id": "centre",
+      "type": "quartier",
+      "label": "Centre",
+      "traits": ["standing"]
+    },
+    {
+      "id": "doux",
+      "type": "prix",
+      "label": "Doux",
+      "traits": []
+    },
+    {
+      "id": "moyen",
+      "type": "prix",
+      "label": "Moyen",
+      "traits": []
+    },
+    {
+      "id": "haut",
+      "type": "prix",
+      "label": "Haut",
+      "traits": []
+    },
+    {
+      "id": "asiatique",
+      "type": "classe",
+      "label": "Asiatique",
+      "traits": []
+    },
+    {
+      "id": "standing",
+      "type": "trait",
+      "label": "Standing",
+      "traits": []
+    },
+    {
+      "id": "addition",
+      "type": "concept",
+      "label": "Addition",
+      "traits": []
+    }
+  ],
+  "relations": [
+    {"source": "gastronomique", "relation": "requiert", "cible": "standing"},
+    {"source": "pizza", "relation": "incompatible", "cible": "haut"},
+    {"source": "ramen", "relation": "sous_type", "cible": "asiatique"},
+    {"source": "gastronomique", "relation": "implique", "cible": "addition"}
+  ],
+  "participants": [
+    {"id": "ines", "label": "Inès"},
+    {"id": "marc", "label": "Marc"},
+    {"id": "hana", "label": "Hana"}
+  ],
+  "profils": {
+    "ines": "cooperatif",
+    "marc": "veto_prone",
+    "hana": "incomplet"
+  },
+  "gouts": {
+    "ines": {
+      "ramen": 8,
+      "pizza": 2,
+      "gastronomique": -1,
+      "canal": 6,
+      "colline": 1,
+      "centre": 3,
+      "doux": 4,
+      "moyen": 2,
+      "haut": -3
+    },
+    "marc": {
+      "ramen": 1,
+      "pizza": 7,
+      "gastronomique": 3,
+      "canal": 2,
+      "colline": 4,
+      "centre": 5,
+      "doux": 6,
+      "moyen": 3,
+      "haut": -7
+    },
+    "hana": {
+      "ramen": 3,
+      "pizza": -1,
+      "gastronomique": 8,
+      "canal": 0,
+      "colline": 2,
+      "centre": 7,
+      "doux": 1,
+      "moyen": 4,
+      "haut": 5
+    }
+  },
+  "preferences": {
+    "notes": {
+      "ines": {
+        "ramen": 8,
+        "pizza": 2,
+        "gastronomique": -1,
+        "canal": 6,
+        "colline": 1,
+        "centre": 3,
+        "doux": 4,
+        "moyen": 2,
+        "haut": -3
+      },
+      "marc": {
+        "ramen": 1,
+        "pizza": 7,
+        "gastronomique": 3,
+        "canal": 2,
+        "colline": 4,
+        "centre": 5,
+        "doux": 6,
+        "moyen": 3,
+        "haut": -7
+      },
+      "hana": {
+        "ramen": 3,
+        "pizza": -1,
+        "gastronomique": 8,
+        "canal": 0,
+        "colline": 2,
+        "centre": 7,
+        "doux": 1,
+        "moyen": 4,
+        "haut": 5
+      }
+    },
+    "veto": {}
+  }
+}
