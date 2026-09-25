@@ -1,0 +1,18 @@
+protocol:
+  nom: vacances_amis
+  rounds: 6
+  anonymat: false
+  fitness: least_misery   # least_misery | moyenne | enthousiasme
+  entropie_seuil: 0.4
+  veto:
+    mode: penalite        # penalite | dur
+    prix: 8               # tokens à payer pour opposer un veto
+    penalite_score: 25
+  retrib:
+    vote: 1
+    concession: 4
+    bonus_delta_h: 10     # si un round fait chuter H de plus de 0.15
+  budget_tokens:
+    P1: 20
+    P2: 20
+    P3: 20

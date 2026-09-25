@@ -1,0 +1,22 @@
+# Scénario jouet : copropriété / travaux / voisinage
+# Personnes qui ne se connaissent pas, voire se détestent.
+# Méta-négociation : plus de rounds, veto plus cher, anonymat ON
+# (échange 323 : ne pas traiter un conflit d'honneur comme un flash-track).
+protocol:
+  nom: copropriete_toiture
+  rounds: 8
+  anonymat: true
+  fitness: least_misery
+  entropie_seuil: 0.35
+  veto:
+    mode: penalite
+    prix: 15
+    penalite_score: 40
+  retrib:
+    vote: 1
+    concession: 6
+    bonus_delta_h: 12
+  budget_tokens:
+    A_rdc: 25
+    B_etage: 25
+    C_combles: 25
