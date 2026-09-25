@@ -18,7 +18,7 @@ if str(_RACINE) not in sys.path:
 import pandas as pd
 import streamlit as st
 
-from agora.cli import GRAINE, executer, lister_scenarios
+from agora.cli import GRAINE, calculer_frontieres, executer, lister_scenarios
 from agora.core.exploration import SEUIL_EXHAUSTIF
 from agora.kr.charger import charger
 from agora.kr.requetes import enumerer_candidats
@@ -234,6 +234,7 @@ def _afficher_resultat(resultat: dict, scenario: dict) -> None:
         st.caption("Pas encore de rounds successifs.")
 
     _afficher_progression(resultat)
+    _afficher_frontieres(scenario_id, resultat)
 
 
 def _afficher_progression(resultat: dict) -> None:
@@ -257,6 +258,95 @@ def _afficher_progression(resultat: dict) -> None:
     for cle, titre in series:
         st.markdown(f"**{titre}**")
         st.line_chart(_courbe(historique, cle, titre))
+
+
+def _afficher_frontieres(scenario_id: str, resultat: dict) -> None:
+    """Carte pour préparer le génétique : domaine valide et région acceptable."""
+    st.subheader("Espace et frontières")
+    st.write(
+        "Le génétique ne visite que les combinaisons valides (contraintes du graphe). "
+        "La région acceptable est le super-niveau du least misery : "
+        "au moins le seuil, veto déjà soustrait. "
+        "Un veto ne coupe pas le point, il ouvre une falaise de coût."
+    )
+    seuil = st.number_input(
+        "Seuil d'acceptabilité (least misery)",
+        value=0.0,
+        step=1.0,
+        key=f"seuil-{scenario_id}",
+    )
+    if st.button("Calculer la carte", key=f"carte-{scenario_id}"):
+        prefs = resultat.get("preferences")
+        with st.spinner("Carte de l'espace…"):
+            carte = calculer_frontieres(
+                scenario_id,
+                seuil=float(seuil),
+                preferences=prefs,
+                simuler=not prefs,
+                seed=GRAINE,
+            )
+        st.session_state["carte"] = carte
+        st.session_state["carte_scenario"] = scenario_id
+
+    carte = st.session_state.get("carte")
+    if not carte or st.session_state.get("carte_scenario") != scenario_id:
+        return
+    if not carte.get("complet"):
+        st.warning(carte.get("message") or "Paysage non construit.")
+        st.json(carte.get("espace"))
+        return
+
+    espace = carte["espace"]
+    acceptable = carte["acceptable"]
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Produit cartésien", espace["produit"])
+    c2.metric("Valides", espace["valides"])
+    c3.metric("Acceptables", acceptable["n"])
+    c4.metric("Falaise de veto", carte["falaise_veto"]["n"])
+    st.caption(
+        f"Seuil {carte['seuil']} : {acceptable['definition']}. "
+        f"Front de Pareto : {len(carte['pareto'])} point(s). "
+        f"Frontière acceptable : {len(carte['frontiere_acceptable'])} point(s). "
+        f"Frontière dure (voisin interdit par le graphe) : {len(carte['frontiere_dure'])}."
+    )
+
+    points = pd.DataFrame(carte["points"])
+    if not points.empty:
+        points["statut"] = points.apply(_statut_point, axis=1)
+        st.markdown("**Plan (moyenne, least misery)**")
+        st.scatter_chart(
+            points,
+            x="moyenne",
+            y="least_misery",
+            color="statut",
+        )
+        st.caption(
+            "Chaque point est un génome valide. "
+            "La falaise regroupe les pénalités de veto. "
+            "L'intérieur acceptable est au-dessus du seuil."
+        )
+
+    coupe = carte.get("coupe")
+    if coupe and coupe.get("cellules"):
+        st.markdown(
+            f"**Coupe** — meilleur least misery selon "
+            f"{coupe['axe_x']} × {coupe['axe_y']} "
+            "(les autres gènes sont optimisés)."
+        )
+        table = pd.DataFrame(coupe["cellules"])
+        pivot = table.pivot(index="y", columns="x", values="least_misery")
+        st.dataframe(pivot)
+
+    st.markdown("**Allèles** — ce qu'une mutation peut atteindre")
+    st.dataframe(pd.DataFrame(carte["marginales"]), hide_index=True)
+
+
+def _statut_point(ligne: pd.Series) -> str:
+    if bool(ligne["falaise"]):
+        return "falaise"
+    if bool(ligne["acceptable"]):
+        return "acceptable"
+    return "hors"
 
 
 def _phrase(resultat: dict, scenario: dict) -> str:

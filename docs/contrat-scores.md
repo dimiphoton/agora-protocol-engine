@@ -80,3 +80,27 @@ Deux participants, deux candidats, notes déjà inférées.
 - B ajusté : s1 = 2 - 100 = -98, s2 = 6, least misery = -98, moyenne = -46, pénalité = 100
 
 A gagne. B reste dans le classement, écrasé par le coût de veto.
+
+## Frontières (préparer le génétique)
+
+Deux ensembles, à ne pas confondre.
+
+```text
+X = produit cartésien des allèles          # avant le graphe
+F = { c dans X : combinaison_valide(c) }   # domaine du génétique
+A(τ) = { c dans F : least_misery(c) >= τ } # région acceptable, τ = 0 par défaut
+```
+
+- **Frontière dure** : `c` dans `F` qui a un voisin (un seul gène changé) hors de `F`. C'est le mur `requiert` / `incompatible`. Le génétique n'a pas le droit de le franchir.
+- **Falaise de veto** : `c` dans `F` avec `penalite(c) > 0`. Le point reste dans `F`. Le saut de score vaut `V = 100`.
+- **Frontière acceptable** : `c` dans `A(τ)` qui a un voisin dans `F` mais pas dans `A(τ)`.
+- **Pareto** : `c` dans `F` tel qu'aucun autre point de `F` n'améliore toutes les satisfactions ajustées, et une strictement. Le least misery est une scalarisation de ce front, pas le front lui-même.
+
+**Marge d'un allèle** : meilleur `least_misery` parmi les `c` de `F` qui fixent cet allèle. Un allèle dont cette marge est sous `τ` ne mène jamais dans `A(τ)`.
+
+**Coupe** : deux dimensions les plus riches. Chaque case affiche le max du least misery sur les autres gènes. Case vide = aucun génome valide.
+
+Si `|X| > 8000`, la carte n'est pas construite : c'est le régime de l'algorithme génétique, pas de l'énumération.
+
+Fonction : `analyser_frontieres(scenario, preferences, seuil=0)`.
+Commande : `python -m agora.cli frontieres veto`.

@@ -12,6 +12,7 @@ import json
 import sys
 from pathlib import Path
 
+from agora.core.frontieres import analyser_frontieres
 from agora.core.moteur import tourner
 from agora.scenarios import charger_scenario, preferences_figees
 from agora.simulateurs.boucle import jouer
@@ -92,6 +93,7 @@ def executer(
         else:
             prefs = preferences or {"notes": {}, "veto": {}}
         brut = tourner(scenario, prefs, seed=seed)
+        brut["preferences"] = prefs
     return publier(nom, brut)
 
 
@@ -107,6 +109,7 @@ def publier(nom: str, brut: dict) -> dict:
             "metriques": brut.get("metriques") or {},
             "mode": brut.get("mode"),
             "version": version_git(),
+            "preferences": brut.get("preferences"),
         }
     )
 
@@ -143,6 +146,14 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.commande == "scenarios":
             payload = lister_scenarios()
+        elif args.commande == "frontieres":
+            payload = calculer_frontieres(
+                args.scenario,
+                seed=args.seed,
+                simuler=args.simuler,
+                seuil=args.seuil,
+                preferences=lire_fichier_prefs(args.prefs) if args.prefs else None,
+            )
         else:
             if args.simuler and args.prefs:
                 raise ValueError("choisissez --simuler ou --prefs, pas les deux")
@@ -190,7 +201,37 @@ def construire_parser() -> argparse.ArgumentParser:
         "--prefs",
         help="fichier JSON {notes, veto} pour un seul round",
     )
+    carte = sous.add_parser(
+        "frontieres",
+        help="espace valide, région acceptable, Pareto, falaise de veto",
+    )
+    carte.add_argument("scenario", help="nom du scénario")
+    carte.add_argument("--seuil", type=float, default=0.0)
+    carte.add_argument("--simuler", action="store_true")
+    carte.add_argument("--seed", type=int, default=GRAINE)
+    carte.add_argument("--prefs", help="fichier JSON {notes, veto}")
     return parser
+
+
+def calculer_frontieres(
+    nom: str,
+    *,
+    seed: int = GRAINE,
+    simuler: bool = False,
+    seuil: float = 0.0,
+    preferences: dict | None = None,
+) -> dict:
+    """Paysage du scénario, sans le graphe NetworkX."""
+    scenario = charger_scenario(nom)
+    if simuler:
+        brut = jouer(scenario, profils_pour(scenario), seed=seed)
+        prefs = brut.get("preferences") or {"notes": {}, "veto": {}}
+    else:
+        prefs = fusionner_preferences(preferences_figees(scenario), preferences)
+    paysage = analyser_frontieres(scenario, prefs, seuil=seuil)
+    paysage["scenario"] = nom
+    paysage["version"] = version_git()
+    return _serialisable(paysage)
 
 
 def _serialisable(valeur):

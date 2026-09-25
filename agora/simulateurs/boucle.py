@@ -113,6 +113,7 @@ def jouer(
         "accord": lire_accord(graphe),
         "graphe": graphe,
         "mode": dernier["mode"] if dernier else None,
+        "preferences": {"notes": notes, "veto": veto},
     }
 
 

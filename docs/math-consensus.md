@@ -111,6 +111,41 @@ Sur la simulation vacances à 3, \(H_{\text{round}}\) passe d’environ 3,44 (be
 
 La négociation simulée s’arrête si le même meilleur candidat tient **3 rounds** d’affilée, ou au bout de **8 rounds**.
 
+## Espace, frontières, algorithme génétique
+
+Le génétique ne parcourt pas toutes les combinaisons imaginables. Il parcourt le domaine valide découpé par le graphe.
+
+\[
+X = \text{produit des allèles},
+\quad
+F = \{ c \in X : c \text{ respecte requiert et incompatible} \},
+\quad
+A(\tau) = \{ c \in F : \text{least misery}(c) \ge \tau \}
+\]
+
+\(\tau = 0\) par défaut : après retrait du veto, personne n'est sous la note neutre.
+
+Deux bords :
+
+- la **frontière dure**, entre \(F\) et \(X \setminus F\). Un pas de mutation qui sort de \(F\) est réparé. Ce n'est pas un veto ;
+- la **frontière acceptable**, entre \(A(\tau)\) et \(F \setminus A(\tau)\). Un point de \(A(\tau)\) est sur ce bord s'il a un voisin dans \(F\) (distance de Hamming 1) dont le least misery est sous \(\tau\).
+
+La **falaise de veto** est intérieure à \(F\). Le point reste un génome légal. Sa satisfaction ajustée chute de \(V = 100\) par veto. Sur le plan (moyenne, least misery) ces points se détachent du nuage des notes ordinaires.
+
+Le **front de Pareto** est l'ensemble des points de \(F\) non dominés coordonnée par coordonnée dans \(\mathbb{R}^{n}\) (une coordonnée par participant, satisfaction ajustée). Maximiser le least misery choisit un point de ce front, celui qui relève le plus bas. D'autres points du front peuvent avoir une moyenne plus haute et un minimum plus bas : l'interface les liste pour qu'on voie ce que la scalarisation a écarté.
+
+La **coupe** projette \(F\) sur les deux dimensions qui ont le plus d'allèles. La case \((x, y)\) vaut
+
+\[
+\max \{ \text{least misery}(c) : c \in F,\ c_x = x,\ c_y = y \}
+\]
+
+C'est le meilleur compromis si ces deux gènes sont figés et que les autres sont choisis au mieux. Une case vide est un mur du graphe, pas un score de 0.
+
+Si \(|X| > 8000\), cette carte n'est pas calculée. L'énumération céderait la place au génétique, et un dessin partiel se ferait passer pour le terrain entier.
+
+Dans l'interface : après un compromis, « Calculer la carte ». En ligne de commande : `python -m agora.cli frontieres veto`.
+
 ## Limites
 
 - Le least misery protège la personne la moins satisfaite. Il ignore presque les gens déjà contents.
