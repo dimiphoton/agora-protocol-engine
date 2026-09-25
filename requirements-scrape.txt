@@ -1,0 +1,5 @@
+# Scripts de récupération des conversations Gemini (hors MVP, hors Streamlit Cloud)
+beautifulsoup4==4.15.0
+lxml==6.1.3
+html2text==2025.4.15
+playwright==1.63.0

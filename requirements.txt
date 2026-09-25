@@ -1,10 +1,4 @@
-# Dépendances Python du projet agora-protocol-engine
-# Scraping / parsing des conversations Gemini (scripts/)
-beautifulsoup4==4.15.0
-lxml==6.1.3
-html2text==2025.4.15
-playwright==1.63.0
-# Core moteur (MVP) : graphe, scores, validation, tests
+# Dépendances du MVP Agora (moteur, tests, interface)
 networkx
 pandas
 numpy
