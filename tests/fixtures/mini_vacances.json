@@ -1,0 +1,83 @@
+{
+  "id": "mini_vacances",
+  "domaine": "vacances",
+  "dimensions": ["destination", "logement", "activite"],
+  "noeuds": [
+    {
+      "id": "bretagne",
+      "type": "destination",
+      "label": "Bretagne",
+      "traits": ["acces_mer"]
+    },
+    {
+      "id": "auvergne",
+      "type": "destination",
+      "label": "Auvergne",
+      "traits": ["plat"]
+    },
+    {
+      "id": "hotel",
+      "type": "logement",
+      "label": "Hôtel",
+      "traits": []
+    },
+    {
+      "id": "camping",
+      "type": "logement",
+      "label": "Camping",
+      "traits": []
+    },
+    {
+      "id": "voile",
+      "type": "activite",
+      "label": "Voile",
+      "traits": []
+    },
+    {
+      "id": "festival",
+      "type": "activite",
+      "label": "Festival",
+      "traits": []
+    },
+    {
+      "id": "randonnee",
+      "type": "activite",
+      "label": "Randonnée",
+      "traits": []
+    },
+    {
+      "id": "nautique",
+      "type": "classe",
+      "label": "Nautique",
+      "traits": []
+    },
+    {
+      "id": "budget_eleve",
+      "type": "concept",
+      "label": "Budget élevé",
+      "traits": []
+    },
+    {
+      "id": "acces_mer",
+      "type": "trait",
+      "label": "Accès mer",
+      "traits": []
+    },
+    {
+      "id": "plat",
+      "type": "trait",
+      "label": "Plat",
+      "traits": []
+    }
+  ],
+  "relations": [
+    {"source": "voile", "relation": "sous_type", "cible": "nautique"},
+    {"source": "voile", "relation": "requiert", "cible": "acces_mer"},
+    {"source": "festival", "relation": "implique", "cible": "budget_eleve"},
+    {"source": "randonnee", "relation": "incompatible", "cible": "plat"}
+  ],
+  "participants": [
+    {"id": "p1", "label": "Alice"},
+    {"id": "p2", "label": "Bob"}
+  ]
+}
